@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Você me ama?</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            background-color: #f8f8f8;
+            color: #333;
+            padding: 20px;
+        }
+        .container {
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 80%;
+            max-width: 500px;
+        }
+        .buttons {
+            margin-top: 20px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 10px;
+            transition: 0.3s;
+        }
+        .btn-sim {
+            background-color: #ff99cc;
+            color: white;
+        }
+        .btn-nao {
+            background-color: #66ccff;
+            color: white;
+        }
+        .btn-sim:hover {
+            background-color: #ff66b2;
+        }
+        .btn-nao:hover {
+            background-color: #3399ff;
+        }
+        .hidden {
+            display: none;
+        }
+        .message {
+            font-size: 20px;
+            margin-top: 20px;
+            color: #ff66b2;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Você me ama?</h1>
+        <div class="buttons">
+            <button class="btn-sim" onclick="showMessage()">Sim</button>
+            <button class="btn-nao" onclick="handleNoButton()">Não</button>
+        </div>
+        <div id="message" class="hidden message">Eu também, meu xuxu!</div>
+        <audio id="sound" src="teste.mp3"></audio>
+    </div>
+    <script>
+        let isFirstClick = true;
+
+        function showMessage() {
+            document.getElementById('message').classList.remove('hidden');
+        }
+
+        function handleNoButton() {
+            if (isFirstClick) {
+                document.getElementById('sound').play();
+                isFirstClick = false;
+            }
+            moveButton();
+        }
+
+        function moveButton() {
+            var button = document.querySelector('.btn-nao');
+            button.style.position = 'absolute';
+            button.style.left = Math.random() * (window.innerWidth - button.offsetWidth) + 'px';
+            button.style.top = Math.random() * (window.innerHeight - button.offsetHeight) + 'px';
+        }
+    </script>
+</body>
+</html>
